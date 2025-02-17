@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaaSDashboard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a566823bef5e65ab8886ef1a1f46dc1a6152e46b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55318ef86581299aa85238673425e1f716b2bdab")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaaSDashboard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaaSDashboard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
