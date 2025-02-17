@@ -5,7 +5,7 @@ using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Mappers.Users;
 
-public class UserMapper : Mapper<GetAllDto, GetAllDto, UserModel>
+public class GetAllMapper : Mapper<GetAllDto, GetAllDto, UserModel>
 {
     public override UserModel ToEntity(GetAllDto dto) => new()
     {

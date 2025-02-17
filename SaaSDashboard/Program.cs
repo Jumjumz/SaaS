@@ -1,6 +1,8 @@
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 using SaaSDashboard.Data;
+using SaaSDashboard.Interfaces;
+using SaaSDashboard.Repository.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<MariaDBContext>(options =>
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     }
 );
+builder.Services.AddScoped<IUser, UserRepository>();
 
 var app = builder.Build();
 
