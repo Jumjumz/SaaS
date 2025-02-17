@@ -31,3 +31,13 @@ C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\obj\Debug\net8.0\r
 C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\obj\Debug\net8.0\SaaSDashboard.pdb
 C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\obj\Debug\net8.0\SaaSDashboard.genruntimeconfig.cache
 C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\obj\Debug\net8.0\ref\SaaSDashboard.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\FastEndpoints.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\FastEndpoints.Attributes.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\FastEndpoints.Messaging.Core.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\JUMJUMZ\Desktop\WORK\NET\SaaSDashboard\SaaSDashboard\obj\Debug\net8.0\SaaSDashboard.sourcelink.json
