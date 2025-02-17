@@ -18,13 +18,15 @@ public class GetAllEndpoints : EndpointWithoutRequest<List<GetAllDto>>
     
     public override void Configure()
     {
-        Get("/users");
+        Get("/");
         AllowAnonymous();
+        Group<UserEndpoints>();
         Description(
             d => d.Produces<GetAllDto>(200, "application/json")
-            .Produces(404)
-            .WithMetadata()
-            .WithTags("Get All Users"));
+                .Produces(404)
+                .WithMetadata()
+                .WithDescription("Get All Users")
+                .WithName("Get All Users"));
     }
 
     public override async Task HandleAsync(CancellationToken ct)
