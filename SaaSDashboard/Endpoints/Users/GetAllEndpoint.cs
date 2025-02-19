@@ -6,10 +6,10 @@ using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Endpoints.Users;
 
-public class GetAllEndpoints : EndpointWithoutRequest<List<GetAllDto>, GetAllMapper>
+public class GetAllEndpoint : EndpointWithoutRequest<List<GetAllDto>, GetAllMapper>
 {
     private readonly IUser _user;
-    public GetAllEndpoints(IUser user)
+    public GetAllEndpoint(IUser user)
     {
         _user = user;
     }
