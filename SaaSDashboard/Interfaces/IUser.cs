@@ -1,8 +1,9 @@
 using SaaSDashboard.DTOs.Users;
+using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Interfaces;
 
 public interface IUser
 {
-    Task<List<GetAllDto>> GetAllAsync(CancellationToken ct);
+    Task<List<UserModel>> GetAllAsync(CancellationToken ct);
 }

@@ -1,18 +1,16 @@
 using FastEndpoints;
-using SaaSDashboard.Data;
 using SaaSDashboard.DTOs.Users;
 using SaaSDashboard.Interfaces;
+using SaaSDashboard.Mappers.Users;
+using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Endpoints.Users;
 
-public class GetAllEndpoints : EndpointWithoutRequest<List<GetAllDto>>
+public class GetAllEndpoints : EndpointWithoutRequest<List<GetAllDto>, GetAllMapper>
 {
-    private readonly MariaDBContext _context;
     private readonly IUser _user;
-
-    public GetAllEndpoints(MariaDBContext context, IUser user)
+    public GetAllEndpoints(IUser user)
     {
-        _context = context;
         _user = user;
     }
     
@@ -31,7 +29,8 @@ public class GetAllEndpoints : EndpointWithoutRequest<List<GetAllDto>>
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        List<GetAllDto> users = await _user.GetAllAsync(ct);
-        await SendAsync(users, cancellation: ct);
+        List<UserModel> users = await _user.GetAllAsync(ct);
+        var response = Map.FromEntity(users); // var response = users.Select(Map.FromEntity).ToList() though you dont need this if you implement the conversion in the mapper
+        await SendAsync(response, cancellation: ct);
     }
 }
