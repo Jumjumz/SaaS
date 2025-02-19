@@ -15,7 +15,7 @@ public class UserRepository : IUser
         _context = context;
     }
     
-    public async Task<List<UserModel>> GetAllAsync(CancellationToken ct)
+    public async Task<List<UserModel>> GetAllAsync()
     {
         return await _context.system_users.ToListAsync();
     }
