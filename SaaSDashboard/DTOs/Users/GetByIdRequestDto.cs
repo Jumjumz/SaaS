@@ -1,3 +1,5 @@
+using FastEndpoints;
+
 namespace SaaSDashboard.DTOs.Users;
 
 public class GetByIdRequestDto

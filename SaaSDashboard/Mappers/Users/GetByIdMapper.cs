@@ -6,10 +6,7 @@ namespace SaaSDashboard.Mappers.Users;
 
 public class GetByIdMapper : Mapper<GetByIdRequestDto, GetAllDto, UserModel>
 {
-    public override UserModel ToEntity(GetByIdRequestDto r) => new()
-    {
-        id = r.id,
-    };
+    public int ToEntity(GetByIdRequestDto r) => r.id;
 
     public override GetAllDto FromEntity(UserModel user) => new()
     {
