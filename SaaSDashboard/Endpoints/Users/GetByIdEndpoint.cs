@@ -31,7 +31,7 @@ public class GetByIdEndpoint : Endpoint<GetByIdRequestDto, GetAllDto, GetByIdMap
     public override async Task HandleAsync(GetByIdRequestDto r, CancellationToken ct)
     {
         UserModel users = Map.ToEntity(r);
-        var user = await _user.GetByIdAsync(users.id);
+        var user = await _user.GetByIdAsync(users.id, ct);
         var response = Map.FromEntity(user);
         await SendAsync(response, cancellation: ct);
     }

@@ -5,6 +5,6 @@ namespace SaaSDashboard.Interfaces;
 
 public interface IUser
 {
-    Task<List<UserModel>> GetAllAsync();
-    Task<UserModel> GetByIdAsync(int id);
+    Task<List<UserModel>> GetAllAsync(CancellationToken ct);
+    Task<UserModel> GetByIdAsync(int id, CancellationToken ct);
 }

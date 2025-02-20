@@ -29,7 +29,7 @@ public class GetAllEndpoint : EndpointWithoutRequest<List<GetAllDto>, GetAllMapp
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        List<UserModel> users = await _user.GetAllAsync();
+        List<UserModel> users = await _user.GetAllAsync(ct);
         var response = Map.FromEntity(users); // var response = users.Select(Map.FromEntity).ToList() though you dont need this if you implement the conversion in the mapper
         await SendAsync(response, cancellation: ct);
     }

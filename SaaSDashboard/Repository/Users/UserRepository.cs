@@ -15,12 +15,12 @@ public class UserRepository : IUser
         _context = context;
     }
     
-    public async Task<List<UserModel>> GetAllAsync()
+    public async Task<List<UserModel>> GetAllAsync(CancellationToken ct)
     {
         return await _context.system_users.ToListAsync();
     }
 
-    public async Task<UserModel> GetByIdAsync(int id)
+    public async Task<UserModel> GetByIdAsync(int id, CancellationToken ct)
     {
         return await _context.system_users.FirstOrDefaultAsync(u => u.id == id);
     }
