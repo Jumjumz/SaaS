@@ -22,6 +22,6 @@ public class UserRepository : IUser
 
     public async Task<UserModel> GetByIdAsync(int id, CancellationToken ct)
     {
-        return await _context.system_users.FirstOrDefaultAsync(u => u.id == id);
+        return await _context.system_users.Where(u => u.id == id).FirstOrDefaultAsync(ct);
     }
 }
