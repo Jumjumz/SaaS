@@ -6,6 +6,7 @@ using SaaSDashboard.Repository.Users;
 
 using FastEndpoints.Swagger;
 using Microsoft.Extensions.Options;
+using SaaSDashboard.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,10 +47,4 @@ app
     .UseSwaggerGen();
 
 app.Run();
-
-public class MySettings
-{
-    public string AppName { get; set; } = "SaaSDashboard";
-    public string Version { get; set; } = "v1";
-}
 
