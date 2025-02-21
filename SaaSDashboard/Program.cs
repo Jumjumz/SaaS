@@ -4,15 +4,31 @@ using SaaSDashboard.Data;
 using SaaSDashboard.Interfaces;
 using SaaSDashboard.Repository.Users;
 
+using FastEndpoints.Swagger;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.Configure<MySettings>(builder.Configuration.GetSection("MySettings"));
+
 builder.Services
     .AddFastEndpoints()
-    .AddSwaggerGen();
+    .SwaggerDocument(o =>
+{
+    // IServiceProvider is available via DocumentOptions.Services property
+    var settings = o.Services.GetRequiredService<IOptions<MySettings>>().Value;
+    
+    o.DocumentSettings = s =>
+    {
+        s.DocumentName = "v1"; 
+        s.Title = settings.AppName;  
+        s.Version = settings.Version;  
+        s.Description = "This is my API documentation.";
+    };
+});
 
 builder.Services.AddDbContext<MariaDBContext>(options =>
     {
@@ -24,16 +40,16 @@ builder.Services.AddScoped<IUser, UserRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
 app
     .UseFastEndpoints()
-    .UseSwagger();
+    .UseSwaggerGen();
 
 app.Run();
+
+public class MySettings
+{
+    public string AppName { get; set; } = "SaaSDashboard";
+    public string Version { get; set; } = "v1";
+}
+

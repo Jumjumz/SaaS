@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using FastEndpoints;
 using SaaSDashboard.DTOs.Users;
 using SaaSDashboard.Interfaces;
@@ -16,20 +17,20 @@ public class GetByIdEndpoint : Endpoint<GetByIdRequestDto, GetAllDto, GetByIdMap
     
     public override void Configure()
     {
-        Get("/{id}");
+        Get("{id}");
         AllowAnonymous();
         Group<UserEndpoints>();
-        Description(d => d
-            .Produces<GetAllDto>(200, "application/json")
-            .Produces(404)
-            .WithTags("Users")
-            .WithName("GetUserById"));
+        Description(
+            d => d.Produces<GetAllDto>(200, "application/json")
+                .Produces(404)
+                .Accepts<GetByIdRequestDto>()
+                .WithDescription("Get User By Id")
+                .WithName("Get User By Id"));
     }
 
     public override async Task HandleAsync(GetByIdRequestDto r, CancellationToken ct)
     {
-        var id = Map.ToEntity(r);
-        var user = await _user.GetByIdAsync(id, ct);
+        var user = await _user.GetByIdAsync(r.id, ct);
         var response = Map.FromEntity(user);
         await SendAsync(response, cancellation: ct);
     }

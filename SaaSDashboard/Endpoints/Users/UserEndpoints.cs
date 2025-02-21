@@ -8,7 +8,7 @@ public class UserEndpoints : Group
     {
         Configure("users", ep =>
         {
-            ep.Description(x => x.Produces(401).WithTags("User"));
+            ep.Description(x => x.Produces(401).WithTags("User Endpoints"));
         });
     }
 }

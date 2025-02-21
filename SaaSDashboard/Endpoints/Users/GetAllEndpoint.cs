@@ -24,7 +24,8 @@ public class GetAllEndpoint : EndpointWithoutRequest<List<GetAllDto>, GetAllMapp
                 .Produces(404)
                 .WithMetadata()
                 .WithDescription("Get All Users")
-                .WithName("Get All Users"));
+                .WithName("Get All Users")
+                .WithTags("Users"));
     }
 
     public override async Task HandleAsync(CancellationToken ct)

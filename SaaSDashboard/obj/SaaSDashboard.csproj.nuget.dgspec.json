@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[5.34.0, )"
             },
+            "FastEndpoints.Swagger": {
+              "target": "Package",
+              "version": "[5.34.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.6, )"
