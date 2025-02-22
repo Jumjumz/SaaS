@@ -7,4 +7,5 @@ public interface IUser
 {
     Task<List<UserModel>> GetAllAsync(CancellationToken ct);
     Task<UserModel> GetByIdAsync(int id, CancellationToken ct);
+    Task<UserModel> CreateAsync(UserModel user, CancellationToken ct);
 }

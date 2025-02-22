@@ -24,4 +24,12 @@ public class UserRepository : IUser
     {
         return await _context.system_users.Where(u => u.id == id).FirstOrDefaultAsync(ct);
     }
+
+    public async Task<UserModel> CreateAsync(UserModel user, CancellationToken ct)
+    {
+        await _context.system_users.AddAsync(user);
+        await _context.SaveChangesAsync(ct);
+
+        return user;
+    }
 }
