@@ -13,7 +13,6 @@ public class GetByIdMapper : Mapper<GetByIdRequestDto, GetAllDto, UserModel>
         username = user.username,
         name = user.name,
         email = user.email,
-        password = user.password,
         group_id = user.group_id,
         is_active = user.is_active,
         support_role = user.support_role,

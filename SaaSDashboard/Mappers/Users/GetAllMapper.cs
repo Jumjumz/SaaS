@@ -13,7 +13,6 @@ public class GetAllMapper : Mapper<GetAllDto, GetAllDto, UserModel>, IResponseMa
         username = u.username,
         name = u.name,
         email = u.email,
-        password = u.password,
         group_id = u.group_id,
         is_active = u.is_active,
         support_role = u.support_role,

@@ -13,8 +13,6 @@ public class GetAllDto
     public string name { get; set; }
     [Required]
     public string email { get; set; }
-    [Required]
-    public string password { get; set; }
     public int? group_id { get; set; }
     public bool is_active { get; set; }
     [StringLength(255)]

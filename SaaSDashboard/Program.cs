@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using SaaSDashboard.Data;
 using SaaSDashboard.Interfaces;
 using SaaSDashboard.Repository.Users;
-
 using FastEndpoints.Swagger;
 using Microsoft.Extensions.Options;
 using SaaSDashboard.Settings;
@@ -19,7 +18,6 @@ builder.Services
     .AddFastEndpoints()
     .SwaggerDocument(o =>
 {
-    // IServiceProvider is available via DocumentOptions.Services property
     var settings = o.Services.GetRequiredService<IOptions<MySettings>>().Value;
     
     o.DocumentSettings = s =>
@@ -27,7 +25,7 @@ builder.Services
         s.DocumentName = "v1"; 
         s.Title = settings.AppName;  
         s.Version = settings.Version;  
-        s.Description = "This is my API documentation.";
+        s.Description = "This is a SaaS API documentation.";
     };
 });
 
