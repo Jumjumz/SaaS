@@ -29,8 +29,8 @@ public class PostCreateUserEndpoint : Endpoint<CreateUserRequest, CreateUserResp
 
     public override async Task HandleAsync(CreateUserRequest req, CancellationToken ct)
     {
-        var user = Map.ToEntity(req);
-        var newUser = await _user.CreateAsync(user, ct);
+        UserModel entity = Map.ToEntity(req);
+        UserModel newUser = await _user.CreateAsync(entity, ct);
         var response = Map.FromEntity(newUser);
         await SendAsync(response, cancellation: ct);
     }
