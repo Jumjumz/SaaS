@@ -12,10 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.Configure<MySettings>(builder.Configuration.GetSection("MySettings"));
-
+// interfaces and repository
+builder.Services.AddScoped<IUser, UserRepository>();
+// fast endpoint config
 builder.Services
     .AddFastEndpoints()
+    .Configure<MySettings>(builder.Configuration.GetSection("MySettings"))
     .SwaggerDocument(o =>
 {
     var settings = o.Services.GetRequiredService<IOptions<MySettings>>().Value;
@@ -35,7 +37,6 @@ builder.Services.AddDbContext<MariaDBContext>(options =>
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     }
 );
-builder.Services.AddScoped<IUser, UserRepository>();
 
 var app = builder.Build();
 
