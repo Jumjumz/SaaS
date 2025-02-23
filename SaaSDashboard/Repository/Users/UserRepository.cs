@@ -32,4 +32,12 @@ public class UserRepository : IUser
 
         return user;
     }
+
+    public async Task<UserModel> DeleteAsync(int id, CancellationToken ct)
+    {
+        await _context.system_users.Where(u => u.id == id).ExecuteDeleteAsync(ct);
+        await _context.SaveChangesAsync(ct);
+
+        return new UserModel();
+    }
 }
