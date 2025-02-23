@@ -33,11 +33,36 @@ public class UserRepository : IUser
         return user;
     }
 
-    public async Task<UserModel> DeleteAsync(int id, CancellationToken ct)
+    public async Task<IResult> DeleteAsync(int id, CancellationToken ct)
     {
-        await _context.system_users.Where(u => u.id == id).ExecuteDeleteAsync(ct);
-        await _context.SaveChangesAsync(ct);
+        //await _context.system_users.Where(u => u.id == id).ExecuteDeleteAsync(ct); instantly delete the user no need to do save changes
+        /*var user = await _context.system_users.FindAsync(id);
 
-        return new UserModel();
+        if (user == null)
+        {
+            return Results.NotFound();
+        }
+        
+        _context.system_users.Remove(user);
+        await _context.SaveChangesAsync(ct);
+        
+        return Results.Ok("User deleted");*/
+        try
+        {
+            var user = await _context.system_users.FindAsync(id);
+            
+            if (user == null)
+            {
+                return Results.NotFound();
+            }
+            
+            _context.system_users.Remove(user);
+            await _context.SaveChangesAsync(ct);
+            return Results.Ok("User deleted");
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 }

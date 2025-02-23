@@ -1,11 +1,10 @@
 using FastEndpoints;
 using SaaSDashboard.DTOs.Users;
 using SaaSDashboard.Interfaces;
-using SaaSDashboard.Mappers.Users;
 
 namespace SaaSDashboard.Endpoints.Users;
 
-public class DeleteUserEndpoint : Endpoint<GetByIdRequestDto, DeleteUserDto, DeleteUserMapper>
+public class DeleteUserEndpoint : Endpoint<GetByIdRequestDto, IResult>
 {
     private readonly IUser _user;
 
@@ -19,16 +18,15 @@ public class DeleteUserEndpoint : Endpoint<GetByIdRequestDto, DeleteUserDto, Del
         Delete("{id}");
         AllowAnonymous();
         Group<UserEndpoints>();
-        Description(d => d.Produces<DeleteUserDto>(200, "application/json")
-            .Produces(404)
+        Description(d => d.Produces<IResult>(200, "application/json")
+            .Produces(400)
             .WithDescription("Delete User By Id")
             .WithName("Delete User By Id"));
     }
 
-    public async override Task HandleAsync(GetByIdRequestDto r, CancellationToken ct)
+    public override async Task HandleAsync(GetByIdRequestDto r, CancellationToken ct)
     {
-        var entity = await _user.DeleteAsync(r.id, ct);
-        var user = Map.FromEntity(entity);
-        await SendAsync(user, cancellation: ct);
+        IResult entity = await _user.DeleteAsync(r.id, ct);
+        await SendOkAsync(entity, cancellation: ct);
     }
 }

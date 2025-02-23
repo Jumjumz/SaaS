@@ -3,6 +3,7 @@ using FastEndpoints;
 using SaaSDashboard.DTOs.Users;
 using SaaSDashboard.Interfaces;
 using SaaSDashboard.Mappers.Users;
+using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Endpoints.Users;
 
@@ -30,8 +31,8 @@ public class GetByIdEndpoint : Endpoint<GetByIdRequestDto, GetAllDto, GetByIdMap
 
     public override async Task HandleAsync(GetByIdRequestDto r, CancellationToken ct)
     {
-        var user = await _user.GetByIdAsync(r.id, ct);
-        var response = Map.FromEntity(user);
+        UserModel user = await _user.GetByIdAsync(r.id, ct);
+        GetAllDto response = Map.FromEntity(user);
         await SendAsync(response, cancellation: ct);
     }
 }
