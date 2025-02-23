@@ -17,7 +17,7 @@ public class PostCreateUserEndpoint : Endpoint<CreateUserRequest, CreateUserResp
     
     public override void Configure()
     {
-        Post("/users/create");
+        Post("create");
         AllowAnonymous();
         Group<UserEndpoints>();
         Description(d => d.Produces<CreateUserResponse>(200, "application/json")
