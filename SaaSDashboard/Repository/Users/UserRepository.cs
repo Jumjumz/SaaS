@@ -17,7 +17,7 @@ public class UserRepository : IUser
     
     public async Task<List<UserModel>> GetAllAsync(CancellationToken ct)
     {
-        return await _context.system_users.ToListAsync();
+        return await _context.system_users.ToListAsync(ct);
     }
 
     public async Task<UserModel> GetByIdAsync(int id, CancellationToken ct)
