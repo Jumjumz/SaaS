@@ -54,4 +54,17 @@ public class UserRepository : IUser
             return Results.BadRequest(ex.Message);
         }
     }
+
+    public async Task<UserModel> UpdateAsync(UserModel entity, CancellationToken ct)
+    {
+        var user = await _context.system_users.FindAsync(new object[] {entity.id}, ct);
+
+        if (user is null) return null;
+
+         _context.Entry(user).CurrentValues.SetValues(entity);
+        //_context.system_users.Update(entity);
+        await _context.SaveChangesAsync(ct);
+        
+        return user;
+    }
 }

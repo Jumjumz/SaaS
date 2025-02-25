@@ -4,15 +4,13 @@ using SaaSDashboard.Models;
 
 namespace SaaSDashboard.Mappers.Users;
 
-public class PostCreateUserMapper : Mapper<CreateUserRequest, CreateUserResponse, UserModel>
+public class UpdateUserMapper : Mapper<UpdateUserRequest, CreateUserResponse, UserModel>
 {
-    public override UserModel ToEntity(CreateUserRequest user) => new()
+    public override UserModel ToEntity(UpdateUserRequest u) => new()
     {
-        employee_id = user.employee_id,
-        username = user.username,
-        name = user.name,
-        email = user.email,
-        password = user.password,
+        username = u.username,
+        name = u.name,
+        email = u.email
     };
 
     public override CreateUserResponse FromEntity(UserModel user) => new()
