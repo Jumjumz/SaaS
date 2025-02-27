@@ -9,5 +9,5 @@ public interface IUser
     Task<UserModel> GetByIdAsync(int id, CancellationToken ct);
     Task<UserModel> CreateAsync(UserModel user, CancellationToken ct);
     Task<IResult> DeleteAsync(int id, CancellationToken ct);
-    Task<UserModel> UpdateAsync(UserModel entity, CancellationToken ct);
+    Task<UserModel> UpdateAsync(int id, UserModel entity, CancellationToken ct);
 }

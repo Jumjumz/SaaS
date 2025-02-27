@@ -25,8 +25,9 @@ public class UpdateUserEndpoint : Endpoint<UpdateUserRequest, CreateUserResponse
 
     public override async Task HandleAsync(UpdateUserRequest r, CancellationToken ct)
     {
+        var id = Route<int>("id");
         UserModel entity = Map.ToEntity(r);
-        var user = await _user.UpdateAsync(entity, ct);
+        var user = await _user.UpdateAsync(id, entity, ct);
         var response = Map.FromEntity(user);
         await SendAsync(response, cancellation: ct);
     }

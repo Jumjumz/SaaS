@@ -8,7 +8,6 @@ public class UpdateUserMapper : Mapper<UpdateUserRequest, CreateUserResponse, Us
 {
     public override UserModel ToEntity(UpdateUserRequest u) => new()
     {
-        id = u.id,
         username = u.username,
         name = u.name,
         email = u.email

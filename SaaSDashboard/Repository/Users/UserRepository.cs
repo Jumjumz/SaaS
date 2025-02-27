@@ -55,16 +55,23 @@ public class UserRepository : IUser
         }
     }
 
-    public async Task<UserModel> UpdateAsync(UserModel entity, CancellationToken ct)
+    public async Task<UserModel> UpdateAsync(int id, UserModel entity, CancellationToken ct)
     {
-        var user = await _context.system_users.FindAsync(new object[] {entity.id}, ct);
+        var user = await _context.system_users.FirstOrDefaultAsync((u => u.id == id), ct);
 
         if (user is null) return null;
 
-         _context.Entry(user).CurrentValues.SetValues(entity);
-        //_context.system_users.Update(entity);
+        var updateUser = new UserModel()
+        {
+            username = user.username,
+            name = user.name,
+            email = user.email,
+        };
+
+        //_context.Entry(updateUser).CurrentValues.SetValues(entity);
+        _context.system_users.Update(updateUser);
         await _context.SaveChangesAsync(ct);
         
-        return user;
+        return updateUser;
     }
 }
