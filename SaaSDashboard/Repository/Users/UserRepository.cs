@@ -55,7 +55,7 @@ public class UserRepository : IUser
         }
     }
 
-    public async Task<UserModel> UpdateAsync(int id, UserModel entity, CancellationToken ct)
+    public async Task<UserModel> UpdateAsync(int id, UserModel entity, CancellationToken ct) // to fix
     {
         var user = await _context.system_users.FirstOrDefaultAsync((u => u.id == id), ct);
 
